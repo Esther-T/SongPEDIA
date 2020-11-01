@@ -1,13 +1,15 @@
 <%- include("header") -%>
   <body>
-    <div class="box" id="heading">
-      <h1> <%= info[0] %> </h1>
-      <h2>By: <%= info[1] %> </h2>
-    </div>
+    <body>
+      <!-- Begin page content -->
+      <main role="main" class="container">
+        <h1> <%= info[0] %> </h1>
+        <h2>By: <%= info[1] %> </h2>
+        <img src = <%= info[2] %> >
+        <br><br><a href= <%= info[3] %> >Click here to listen!</a>
+        <form class="form-close" action="/close" method="post">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Return</button>
+        </form>
+      </main>
 
-    <img src = <%= info[2] %> >
-    <br><br><a href= <%= info[3] %> >Click here to listen!</a>
-    <form class="form-close" action="/close" method="post">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Return</button>
-    </form>
 <%- include("footer") -%>
