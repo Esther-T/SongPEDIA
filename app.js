@@ -39,7 +39,7 @@ app.post("/", function(req, res){
 
   request.headers({
   	"x-rapidapi-host": "shazam.p.rapidapi.com",
-  	"x-rapidapi-key": /*api key*/,
+  	"x-rapidapi-key": /*insert api key*/,
   	"useQueryString": true
   });
 
