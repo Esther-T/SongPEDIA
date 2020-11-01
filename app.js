@@ -32,8 +32,16 @@ app.post("/", function(req, res){
   const songName = req.body.songName;
   const location = req.body.country;
   console.log(location);
+  if(location == "japan")
+  {
+    res.write("<img class=\"mb-4\" src=\"public/images/under_construction.png\" alt=\"Page under construction\" width=\"1366\" height=\"859\">")
+    return;
+  }
+
+  else
+    locale = "en-" + location;
   request.query({
-  	"locale": "en-US",
+  	"locale": locale,
   	"offset": "0",
   	"limit": "5",
   	"term": songName
