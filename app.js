@@ -30,6 +30,8 @@ app.post("/", function(req, res){
   info = [];
   var request = unirest("GET", "https://shazam.p.rapidapi.com/search");
   const songName = req.body.songName;
+  const location = req.body.country;
+  console.log(location);
   request.query({
   	"locale": "en-US",
   	"offset": "0",
@@ -49,16 +51,9 @@ app.post("/", function(req, res){
 
     if(response.statusCode === 200)
     {
-       console.log("success");
-       console.log(JSON.stringify(response.body));
+       //console.log("success");
+       //console.log(JSON.stringify(response.body));
        const musicInfo = response.body;
-       // console.log(musicInfo);
-       /*
-       res.write("<h1>Song: "+ musicInfo.tracks.hits[0].track.title + "</h1>");
-       res.write("<h2>By: " + musicInfo.tracks.hits[0].track.subtitle + "</h2>")
-       res.write("<img src =" + musicInfo.tracks.hits[0].track.share.image + ">")
-       res.write("<br><br><a href=\""+ musicInfo.tracks.hits[0].track.hub.actions[1].uri +"\"> Click here to listen!</a>");
-       */
        const musicTitle = musicInfo.tracks.hits[0].track.title;
        const musicSinger = musicInfo.tracks.hits[0].track.subtitle;
        const musicImage = musicInfo.tracks.hits[0].track.share.image;
@@ -68,8 +63,6 @@ app.post("/", function(req, res){
        info.push(musicSinger);
        info.push(musicImage);
        info.push(musicUri);
-
-       console.log(info);
     }
 
   	//console.log(res.body);
