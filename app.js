@@ -51,7 +51,7 @@ app.post("/", function(req, res){
     {
        console.log("success");
        console.log(JSON.stringify(response.body));
-       var musicInfo = response.body;
+       const musicInfo = response.body;
        // console.log(musicInfo);
        /*
        res.write("<h1>Song: "+ musicInfo.tracks.hits[0].track.title + "</h1>");
@@ -59,10 +59,10 @@ app.post("/", function(req, res){
        res.write("<img src =" + musicInfo.tracks.hits[0].track.share.image + ">")
        res.write("<br><br><a href=\""+ musicInfo.tracks.hits[0].track.hub.actions[1].uri +"\"> Click here to listen!</a>");
        */
-       var musicTitle = musicInfo.tracks.hits[0].track.title;
-       var musicSinger = musicInfo.tracks.hits[0].track.subtitle;
-       var musicImage = musicInfo.tracks.hits[0].track.share.image;
-       var musicUri =  musicInfo.tracks.hits[0].track.hub.actions[1].uri;
+       const musicTitle = musicInfo.tracks.hits[0].track.title;
+       const musicSinger = musicInfo.tracks.hits[0].track.subtitle;
+       const musicImage = musicInfo.tracks.hits[0].track.share.image;
+       const musicUri =  musicInfo.tracks.hits[0].track.hub.actions[1].uri;
 
        info.push(musicTitle);
        info.push(musicSinger);
