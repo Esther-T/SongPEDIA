@@ -34,7 +34,8 @@ app.post("/", function(req, res){
   console.log(location);
   if(location == "japan")
   {
-    res.write("<img class=\"mb-4\" src=\"public/images/under_construction.png\" alt=\"Page under construction\" width=\"1366\" height=\"859\">")
+    res.write("<h1>Sorry!</h1>")
+    res.write("<img class=\"mb-4\" src=\"images/under_construction.png\" alt=\"Page under construction\" width=\"1366\" height=\"859\">")
     return;
   }
 
