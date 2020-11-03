@@ -7,13 +7,13 @@
         <h2>By: <%= info[1] %> </h2>
         <img src = <%= info[2] %> >
         <div id="playAudio">
-          <video controls name="media">
+          <video controls name="media" height="70" width="500">
             <source src="<%= info[3] %>" type="audio/x-m4a">
           </video>
         </div>
 
-        <form class="form-close" action="/close" method="post">
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Return</button>
+        <form class="form-close" action="/close" method="post" style="margin-top:30px">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
         </form>
       </main>
 
