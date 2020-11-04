@@ -1,0 +1,12 @@
+<%- include("header") -%>
+  <body>
+    <body>
+      <!-- Begin page content -->
+      <main role="main" class="container">
+        <h1>Sorry, we can't find <%= song %> :(</h1>
+        <form class="form-close" action="/close" method="post" style="margin-top:30px">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
+        </form>
+      </main>
+
+<%- include("footer") -%>

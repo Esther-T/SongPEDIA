@@ -21,6 +21,13 @@ app.get("/info", function(req, res)
   res.render('info',{info: info});
 });
 
+app.get("/error", function(req, res)
+{
+  song = req.query.song;
+  res.render('error', {song: song});
+});
+
+
 app.post("/close", function(req, res)
 {
     res.redirect("/");
@@ -30,7 +37,7 @@ app.post("/", function(req, res){
   info = [];
   var request = unirest("GET", "https://shazam.p.rapidapi.com/search");
   const songName = req.body.songName;
-  const location = req.body.country;
+  /*const location = req.body.country;
   console.log(location);
   if(location == "japan")
   {
@@ -40,9 +47,9 @@ app.post("/", function(req, res){
   }
 
   else
-    locale = "en-" + location;
+    locale = "en-" + location;*/
   request.query({
-  	"locale": locale,
+  	"locale": 'en-US',
   	"offset": "0",
   	"limit": "5",
   	"term": songName
@@ -63,6 +70,11 @@ app.post("/", function(req, res){
        //console.log("success");
        //console.log(JSON.stringify(response.body));
        const musicInfo = response.body;
+       if(Object.keys(musicInfo).length === 0)
+       {
+         res.redirect('/error?song=' + songName);
+         return;
+       }
        const musicTitle = musicInfo.tracks.hits[0].track.title;
        const musicSinger = musicInfo.tracks.hits[0].track.subtitle;
        const musicImage = musicInfo.tracks.hits[0].track.share.image;
