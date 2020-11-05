@@ -27,6 +27,10 @@ app.get("/error", function(req, res)
   res.render('error', {song: song});
 });
 
+app.get("/songs", function(req,res)
+{
+  res.render('songs');
+});
 
 app.post("/close", function(req, res)
 {
