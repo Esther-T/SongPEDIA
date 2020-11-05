@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 var unirest = require("unirest");
-var info = [];
 
 const app = express();
 app.set("view engine", "ejs");
@@ -18,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.get("/info", function(req, res)
 {
+  info = req.query.information.split(',');
   res.render('info',{info: info});
 });
 
@@ -34,7 +34,6 @@ app.post("/close", function(req, res)
 });
 
 app.post("/", function(req, res){
-  info = [];
   var request = unirest("GET", "https://shazam.p.rapidapi.com/search");
   const songName = req.body.songName;
   /*const location = req.body.country;
@@ -80,14 +79,17 @@ app.post("/", function(req, res){
        const musicImage = musicInfo.tracks.hits[0].track.share.image;
        const musicUri =  musicInfo.tracks.hits[0].track.hub.actions[1].uri;
 
-       info.push(musicTitle);
-       info.push(musicSinger);
-       info.push(musicImage);
-       info.push(musicUri);
+       const info = musicTitle + ',' + musicSinger + ',' + musicImage + ',' + musicUri;
+
+       res.redirect("/info?information=" + info);
     }
 
   	//console.log(res.body);
-    res.redirect("/info");
+    else
+    {
+      res.redirect('/error?song=' + songName);
+    }
+
   });
 
 
