@@ -29,7 +29,24 @@ app.get("/error", function(req, res)
 
 app.get("/songs", function(req,res)
 {
-  res.render('songs');
+  var musicTitle = [];
+  var musicSinger = [];
+  var musicImage = [];
+  var musicUri = [];
+
+  const musicTitleArray = req.query.musicTitle.split(',,');
+  const musicSingerArray = req.query.musicSinger.split(',,');
+  const musicImageArray = req.query.musicImage.split(',,');
+  const musicUriArray = req.query.musicUri.split(',,');
+
+  for(var i = 0; i < musicTitleArray.length; i++)
+  {
+    musicTitle.push(musicTitleArray[i]);
+    musicSinger.push(musicSingerArray[i]);
+    musicImage.push(musicImageArray[i]);
+    musicUri.push(musicUriArray[i]);
+  }
+  res.render('songs',{musicTitle: musicTitle, musicSinger: musicSinger, musicImage: musicImage, musicUri: musicUri});
 });
 
 app.post("/close", function(req, res)
@@ -78,17 +95,27 @@ app.post("/", function(req, res){
          res.redirect('/error?song=' + songName);
          return;
        }
-       const musicTitle = musicInfo.tracks.hits[0].track.title;
-       const musicSinger = musicInfo.tracks.hits[0].track.subtitle;
-       const musicImage = musicInfo.tracks.hits[0].track.share.image;
-       const musicUri =  musicInfo.tracks.hits[0].track.hub.actions[1].uri;
 
-       const info = musicTitle + ',' + musicSinger + ',' + musicImage + ',' + musicUri;
+       var musicTitle;
+       var musicSinger;
+       var musicImage;
+       var musicUri;
 
-       res.redirect("/info?information=" + info);
+       musicTitle = musicInfo.tracks.hits[0].track.title;
+       musicSinger = musicInfo.tracks.hits[0].track.subtitle;
+       musicImage = musicInfo.tracks.hits[0].track.share.image;
+       musicUri = musicInfo.tracks.hits[0].track.hub.actions[1].uri;
+
+       for(var i = 1; i < musicInfo.tracks.hits.length; i++)
+       {
+          musicTitle = musicTitle + ',,' + musicInfo.tracks.hits[i].track.title;
+          musicSinger = musicSinger +  ',,' + musicInfo.tracks.hits[i].track.subtitle;
+          musicImage = musicImage + ',,' + musicInfo.tracks.hits[i].track.share.image;
+          musicUri = musicUri + ',,' + musicInfo.tracks.hits[i].track.hub.actions[1].uri;
+      }
+
+       res.redirect("/songs?musicTitle=" + musicTitle + "&musicSinger=" + musicSinger + "&musicImage=" + musicImage + "&musicUri=" + musicUri);
     }
-
-  	//console.log(res.body);
     else
     {
       res.redirect('/error?song=' + songName);

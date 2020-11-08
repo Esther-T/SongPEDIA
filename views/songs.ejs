@@ -15,19 +15,26 @@
         </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+        <div class="carousel-inner" id="songs-carousel">
           <div class="item active">
-            <img src="images/no_image.png" alt="Los Angeles" style="width:100%;">
+            <p><%=musicTitle[0] %></p>
+            <p><%=musicSinger[0] %></p>
+            <img src=<%=musicImage[0] %> alt=<%=musicSinger[0] %> style="width:100 height:40;">
+            <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Learn More</button>
+            </form>
           </div>
 
-          <div class="item">
-            <img src="images/no_image.png" alt="Chicago" style="width:100%;">
-          </div>
-
-          <div class="item">
-            <img src="images/no_image.png" alt="New york" style="width:100%;">
-          </div>
-        </div>
+          <% for(var i = 1; i < musicSinger.length; i++){ %>
+            <div class="item">
+              <p><%=musicTitle[i] %></p>
+              <p><%=musicSinger[i] %></p>
+              <img src=<%=musicImage[i] %> alt=<%=musicSinger[i] %> style="width:100 height:40;">
+              <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Learn More</button>
+              </form>
+            </div>
+          <% } %>
 
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -44,7 +51,6 @@
       <form class="form-close" action="/close" method="post" style="margin-top:30px">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
       </form>
-    </main>
   </body>
 
 <%- include("footer") -%>
