@@ -18,6 +18,8 @@ app.get("/", (req, res) => {
 app.get("/info", function(req, res)
 {
   info = req.query.information.split(',');
+  info[0] = info[0].replace(/&/g, ' ');
+  //console.log(info[0]);
   res.render('info',{info: info});
 });
 
@@ -34,6 +36,7 @@ app.get("/songs", function(req,res)
   var musicImage = [];
   var musicUri = [];
 
+  const musicName = req.query.musicName;
   const musicTitleArray = req.query.musicTitle.split(',,');
   const musicSingerArray = req.query.musicSinger.split(',,');
   const musicImageArray = req.query.musicImage.split(',,');
@@ -46,7 +49,7 @@ app.get("/songs", function(req,res)
     musicImage.push(musicImageArray[i]);
     musicUri.push(musicUriArray[i]);
   }
-  res.render('songs',{musicTitle: musicTitle, musicSinger: musicSinger, musicImage: musicImage, musicUri: musicUri});
+  res.render('songs',{musicName: musicName, musicTitle: musicTitle, musicSinger: musicSinger, musicImage: musicImage, musicUri: musicUri});
 });
 
 app.post("/close", function(req, res)
@@ -56,8 +59,7 @@ app.post("/close", function(req, res)
 
 app.post("/learn-more", function(req, res)
 {
-    console.log(req.body);
-    const info = req.body.musicTitle + ',' + req.body.musicSinger + ',' + req.body.musicImage + ',' + req.body.musicUri;
+    const info = req.body.musicName + ',' + req.body.musicTitle + ',' + req.body.musicSinger + ',' + req.body.musicImage + ',' + req.body.musicUri;
     res.redirect("/info?information=" + info);
 });
 
@@ -120,8 +122,7 @@ app.post("/", function(req, res){
           musicImage = musicImage + ',,' + musicInfo.tracks.hits[i].track.share.image;
           musicUri = musicUri + ',,' + musicInfo.tracks.hits[i].track.hub.actions[1].uri;
       }
-
-       res.redirect("/songs?musicTitle=" + musicTitle + "&musicSinger=" + musicSinger + "&musicImage=" + musicImage + "&musicUri=" + musicUri);
+       res.redirect("/songs?musicName=" + songName + "&musicTitle=" + musicTitle + "&musicSinger=" + musicSinger + "&musicImage=" + musicImage + "&musicUri=" + musicUri);
     }
     else
     {

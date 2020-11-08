@@ -2,17 +2,18 @@
   <body>
     <!-- Begin page content -->
     <main role="main" class="container">
-      <h1> <%= info[0] %> </h1>
-      <h2>By: <%= info[1] %> </h2>
-      <img src = <%= info[2] %> >
+      <h1> <%= info[1] %> </h1>
+      <h2>By: <%= info[2] %> </h2>
+      <img src = <%= info[3] %> >
       <div id="playAudio">
         <video controls name="media" height="70" width="500">
-          <source src="<%= info[3] %>" type="audio/x-m4a">
+          <source src="<%= info[4] %>" type="audio/x-m4a">
         </video>
       </div>
 
-      <form class="form-close" action="/close" method="post" style="margin-top:30px">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
+      <form class="form-close" action="/" method="post" style="margin-top:30px">
+        <input type="hidden" name="songName" value=<%=info[0]%>>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Go Back</button>
       </form>
     </main>
   </body>
