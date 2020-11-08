@@ -18,8 +18,13 @@ app.get("/", (req, res) => {
 app.get("/info", function(req, res)
 {
   info = req.query.information.split(',');
-  info[0] = info[0].replace(/&/g, ' ');
-  //console.log(info[0]);
+  /*
+  console.log(info[0]);
+  console.log(info[1]);
+  console.log(info[2]);
+  console.log(info[3]);
+  console.log(info[4]);
+  */
   res.render('info',{info: info});
 });
 

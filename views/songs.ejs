@@ -17,18 +17,15 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" id="songs-carousel">
           <div class="item active">
-            <p><%=musicTitle[0] %></p>
-            <p><%=musicSinger[0] %></p>
+            <h3><%=musicTitle[0] %></h3>
+            <h4><%=musicSinger[0] %></h4>
             <img src=<%=musicImage[0] %> alt=<%=musicSinger[0] %> style="width:100 height:40;">
             <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
-              <% musicName = musicName.replace(/ /g, '&')%>
-              <% musicTitle = musicTitle[0].replace(/ /g, '&')%>
-              <% musicSinger = musicSinger[0].replace(/ /g, '&')%>
-              <input type="hidden" name="musicName" value=<%=musicName%>>
-              <input type="hidden" name="musicTitle" value=<%=musicTitle[0]%>>
-              <input type="hidden" name="musicImage" value=<%=musicImage[0]%>>
-              <input type="hidden" name="musicSinger" value=<%=musicSinger[0]%>>
-              <input type="hidden" name="musicUri" value=<%=musicUri[0]%>>
+              <input type="hidden" name="musicName" value="<%=musicName%>">
+              <input type="hidden" name="musicTitle" value="<%=musicTitle[0]%>">
+              <input type="hidden" name="musicImage" value="<%=musicImage[0]%>">
+              <input type="hidden" name="musicSinger" value="<%=musicSinger[0]%>">
+              <input type="hidden" name="musicUri" value="<%=musicUri[0]%>">
               <button class="btn btn-lg btn-primary btn-block" type="submit">Learn More</button>
             </form>
           </div>
@@ -39,14 +36,11 @@
               <p><%=musicSinger[i] %></p>
               <img src=<%=musicImage[i] %> alt=<%=musicSinger[i] %> style="width:100 height:40;">
               <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
-                <% musicName = musicName.replace(/ /g, '&')%>
-                <% musicTitle = musicTitle[i].replace(/ /g, '&')%>
-                <% musicSinger = musicSinger[i].replace(/ /g, '&')%>
-                <input type="hidden" name="musicName" value=<%=musicName%>>
-                <input type="hidden" name="musicTitle" value=<%=musicTitle[i]%>>
-                <input type="hidden" name="musicImage" value=<%=musicImage[i]%>>
-                <input type="hidden" name="musicSinger" value=<%=musicSinger[i]%>>
-                <input type="hidden" name="musicUri" value=<%=musicUri[i]%>>
+                <input type="hidden" name="musicName" value="<%=musicName%>">
+                <input type="hidden" name="musicTitle" value="<%=musicTitle[i]%>">
+                <input type="hidden" name="musicImage" value="<%=musicImage[i]%>">
+                <input type="hidden" name="musicSinger" value="<%=musicSinger[i]%>">
+                <input type="hidden" name="musicUri" value="<%=musicUri[i]%>">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Learn More</button>
               </form>
             </div>
@@ -68,5 +62,8 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
       </form>
   </body>
+  <script>
+
+    </script>
 
 <%- include("footer") -%>
