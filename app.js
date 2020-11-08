@@ -54,6 +54,13 @@ app.post("/close", function(req, res)
     res.redirect("/");
 });
 
+app.post("/learn-more", function(req, res)
+{
+    console.log(req.body);
+    const info = req.body.musicTitle + ',' + req.body.musicSinger + ',' + req.body.musicImage + ',' + req.body.musicUri;
+    res.redirect("/info?information=" + info);
+});
+
 app.post("/", function(req, res){
   var request = unirest("GET", "https://shazam.p.rapidapi.com/search");
   const songName = req.body.songName;

@@ -21,6 +21,10 @@
             <p><%=musicSinger[0] %></p>
             <img src=<%=musicImage[0] %> alt=<%=musicSinger[0] %> style="width:100 height:40;">
             <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
+              <input type="hidden" name="musicTitle" value=<%=musicTitle[0]%>>
+              <input type="hidden" name="musicImage" value=<%=musicImage[0]%>>
+              <input type="hidden" name="musicSinger" value=<%=musicSinger[0]%>>
+              <input type="hidden" name="musicUri" value=<%=musicUri[0]%>>
               <button class="btn btn-lg btn-primary btn-block" type="submit">Learn More</button>
             </form>
           </div>
@@ -31,6 +35,10 @@
               <p><%=musicSinger[i] %></p>
               <img src=<%=musicImage[i] %> alt=<%=musicSinger[i] %> style="width:100 height:40;">
               <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
+                <input type="hidden" name="musicTitle" value=<%=musicTitle[0]%>>
+                <input type="hidden" name="musicImage" value=<%=musicImage[0]%>>
+                <input type="hidden" name="musicSinger" value=<%=musicSinger[0]%>>
+                <input type="hidden" name="musicUri" value=<%=musicUri[0]%>>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Learn More</button>
               </form>
             </div>
