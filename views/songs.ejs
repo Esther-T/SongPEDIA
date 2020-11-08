@@ -19,7 +19,7 @@
           <div class="item active">
             <h3><%=musicTitle[0] %></h3>
             <h4><%=musicSinger[0] %></h4>
-            <img src=<%=musicImage[0] %> alt=<%=musicSinger[0] %> style="width:100 height:40;">
+            <img src=<%=musicImage[0] %> alt=<%=musicSinger[0] %> style="width:50 height:10;">
             <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
               <input type="hidden" name="musicName" value="<%=musicName%>">
               <input type="hidden" name="musicTitle" value="<%=musicTitle[0]%>">
@@ -32,9 +32,9 @@
 
           <% for(var i = 1; i < musicSinger.length; i++){ %>
             <div class="item">
-              <p><%=musicTitle[i] %></p>
-              <p><%=musicSinger[i] %></p>
-              <img src=<%=musicImage[i] %> alt=<%=musicSinger[i] %> style="width:100 height:40;">
+              <h3><%=musicTitle[i] %></h3>
+              <h4><%=musicSinger[i] %></h4>
+              <img src=<%=musicImage[i] %> alt=<%=musicSinger[i] %> style="width:50 height:10;">
               <form class="form-close" action="/learn-more" method="post" style="margin-top:30px">
                 <input type="hidden" name="musicName" value="<%=musicName%>">
                 <input type="hidden" name="musicTitle" value="<%=musicTitle[i]%>">
@@ -63,7 +63,14 @@
       </form>
   </body>
   <script>
+      if($('.carousel-inner .item:first').hasClass('active'))
+      {
+        document.getElementsByClassName("left carousel-control")[0].style.display = "none";
+      }
+  </script>
+  <style>
+    .carousel-indicators li { visibility: hidden; }
+  </style>
 
-    </script>
 
 <%- include("footer") -%>
