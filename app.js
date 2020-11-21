@@ -64,17 +64,7 @@ app.post("/learn-more", function(req, res)
 app.post("/", function(req, res){
   var request = unirest("GET", "https://shazam.p.rapidapi.com/search");
   const songName = req.body.songName;
-  /*const location = req.body.country;
-  console.log(location);
-  if(location == "japan")
-  {
-    res.write("<h1>Sorry!</h1>")
-    res.write("<img class=\"mb-4\" src=\"images/under_construction.png\" alt=\"Page under construction\" width=\"1366\" height=\"859\">")
-    return;
-  }
 
-  else
-    locale = "en-" + location;*/
   request.query({
   	"locale": 'en-US',
   	"offset": "0",
@@ -103,24 +93,59 @@ app.post("/", function(req, res){
          return;
        }
 
+       var musicTitles;
+       var musicSingers;
+       var musicImages;
+       var musicUris;
        var musicTitle;
        var musicSinger;
        var musicImage;
        var musicUri;
 
-       musicTitle = musicInfo.tracks.hits[0].track.title;
-       musicSinger = musicInfo.tracks.hits[0].track.subtitle;
-       musicImage = musicInfo.tracks.hits[0].track.share.image;
-       musicUri = musicInfo.tracks.hits[0].track.hub.actions[1].uri;
-
-       for(var i = 1; i < musicInfo.tracks.hits.length; i++)
+       for(var i = 0; i < musicInfo.tracks.hits.length; i++)
        {
-          musicTitle = musicTitle + ',,' + musicInfo.tracks.hits[i].track.title;
-          musicSinger = musicSinger +  ',,' + musicInfo.tracks.hits[i].track.subtitle;
-          musicImage = musicImage + ',,' + musicInfo.tracks.hits[i].track.share.image;
-          musicUri = musicUri + ',,' + musicInfo.tracks.hits[i].track.hub.actions[1].uri;
+         try{
+            musicTitle = musicInfo.tracks.hits[i].track.title;
+         }
+        catch(err){
+          musicTtitle = songName;
+        }
+
+        try{
+           musicSinger = musicInfo.tracks.hits[i].track.subtitle;
+        }
+        catch(err){
+          musicSinger = "No results"
+        }
+
+        try{
+          musicImage = musicInfo.tracks.hits[i].track.share.image;
+        }
+        catch(err){
+          musicImage = 'images/no_images.png'
+        }
+
+        try{
+          musicUri = musicInfo.tracks.hits[i].track.hub.actions[1].uri;
+        }
+        catch(err){
+          musicUri = 'none';
+        }
+
+
+        musicTitles = musicTitles + ',,' + musicTitle;
+        musicSingers = musicSingers +  ',,' + musicSinger;
+        musicImages = musicImages + ',,' + musicImage;
+        musicUris = musicUris + ',,' + musicUri;
+
       }
-       res.redirect("/songs?musicName=" + songName + "&musicTitle=" + musicTitle + "&musicSinger=" + musicSinger + "&musicImage=" + musicImage + "&musicUri=" + musicUri);
+
+      musicTitles = musicTitles.replace(',,', '');
+      musicSingers = musicSingers.replace(',,', '');
+      musicImages = musicImages.replace(',,', '');
+      musicUris = musicUris.replace(',,', '');
+
+       res.redirect("/songs?musicName=" + songName + "&musicTitle=" + musicTitles + "&musicSinger=" + musicSingers + "&musicImage=" + musicImages + "&musicUri=" + musicUris);
     }
     else
     {
@@ -128,8 +153,6 @@ app.post("/", function(req, res){
     }
 
   });
-
-
 
 });
 
