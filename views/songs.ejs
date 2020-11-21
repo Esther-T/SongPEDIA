@@ -5,7 +5,10 @@
 
   <body>
     <div class="container">
-      <h2>Search Results for <b><%= musicName %><b></h2>
+      <h2 style="float:left;">Search Results for <b><%= musicName %><b></h2>
+      <form class="form-close" action="/close" method="post" style="margin-top:20px;">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
+      </form>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -57,10 +60,6 @@
         </a>
       </div>
       </div>
-
-      <form class="form-close" action="/close" method="post" style="margin-top:30px">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Return to new search</button>
-      </form>
   </body>
   <script>
       if($('.carousel-inner .item:first').hasClass('active'))
