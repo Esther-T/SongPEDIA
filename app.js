@@ -132,18 +132,21 @@ app.post("/", function(req, res){
           musicUri = 'none';
         }
 
-
-        musicTitles = musicTitles + ',,' + musicTitle;
-        musicSingers = musicSingers +  ',,' + musicSinger;
-        musicImages = musicImages + ',,' + musicImage;
-        musicUris = musicUris + ',,' + musicUri;
-
+        if(i === 0)
+        {
+          musicTitles = musicTitle;
+          musicSingers = musicSinger;
+          musicImages = musicImage;
+          musicUris = musicUri;
+        }
+        else
+        {
+          musicTitles = musicTitles + ',,' + musicTitle;
+          musicSingers = musicSingers +  ',,' + musicSinger;
+          musicImages = musicImages + ',,' + musicImage;
+          musicUris = musicUris + ',,' + musicUri;
+        }
       }
-
-      musicTitles = musicTitles.replace(',,', '');
-      musicSingers = musicSingers.replace(',,', '');
-      musicImages = musicImages.replace(',,', '');
-      musicUris = musicUris.replace(',,', '');
 
        res.redirect("/songs?musicName=" + songName + "&musicTitle=" + musicTitles + "&musicSinger=" + musicSingers + "&musicImage=" + musicImages + "&musicUri=" + musicUris);
     }
