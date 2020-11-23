@@ -55,6 +55,11 @@ app.post("/close", function(req, res)
     res.redirect("/");
 });
 
+app.post("/login", function(req, res)
+{
+    res.redirect("/login");
+});
+
 app.post("/learn-more", function(req, res)
 {
     const info = req.body.musicName + ',' + req.body.musicTitle + ',' + req.body.musicSinger + ',' + req.body.musicImage + ',' + req.body.musicUri;
