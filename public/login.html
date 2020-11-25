@@ -1,22 +1,26 @@
 <!doctype html>
 <html lang="en">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<div class="wrapper fadeInDown">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/login-style.css" rel="stylesheet">
+    <title>SongPEDIA</title>
+    <link rel="icon" href="images/favicon.ico">
+  </head>
+  <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <link rel="icon" href="images/favicon.ico">
+      <img src="images/icon.svg" id="icon" alt="headphones" width="80" height="80" style="margin-top:10px;margin-bottom:10px;"/>
     </div>
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="username" id="login" class="fadeIn second" name="login" placeholder="login"><br>
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
@@ -27,3 +31,4 @@
 
   </div>
 </div>
+</html>
