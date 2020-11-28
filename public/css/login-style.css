@@ -135,12 +135,21 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=username]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type=username]:placeholder {
+  color: #cccccc;
+}
+
+input[type=password]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=password]:placeholder {
   color: #cccccc;
 }
 
@@ -204,19 +213,19 @@ input[type=text]:placeholder {
   animation-duration:1s;
 }
 
-.fadeIn.first {
+.fadeIn.username {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
 
-.fadeIn.second {
+.fadeIn.password {
   -webkit-animation-delay: 0.6s;
   -moz-animation-delay: 0.6s;
   animation-delay: 0.6s;
 }
 
-.fadeIn.third {
+.fadeIn.login {
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay: 0.8s;
   animation-delay: 0.8s;
