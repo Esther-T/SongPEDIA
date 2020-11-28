@@ -63,6 +63,13 @@ app.post("/learn-more", function(req, res)
     res.redirect("/info?information=" + info);
 });
 
+app.post("/log-in", function(req, res){
+  const username = req.body.username;
+  const password = req.body.password;
+  console.log(username);
+  console.log(password);
+});
+
 app.post("/", function(req, res){
   var request = unirest("GET", "https://shazam.p.rapidapi.com/search");
   const songName = req.body.songName;
