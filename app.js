@@ -17,6 +17,11 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html"); //send html file
 })
 
+app.get("/gotologin", (req, res)
+{
+	res.render('login');
+});
+
 app.get("/info", function(req, res)
 {
   info = req.query.information.split(',');
