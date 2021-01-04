@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/login-style.css" rel="stylesheet">
+    <title>SongPEDIA</title>
+    <link rel="icon" href="images/favicon.ico">
+  </head>
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="images/icon.svg" id="icon" alt="headphones" width="80" height="80" style="margin-top:10px;margin-bottom:10px;"/>
+    </div>
+
+    <!-- Login Form -->
+    <form class="form-close" action="/log-in" method="post">
+      <input type="username" id="username" class="fadeIn username" name="username" placeholder="username" required><br>
+      <input type="password" id="password" class="fadeIn password" name="password" placeholder="password" required><br>
+      <input type="submit" class="fadeIn login" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+	  <form class="form-close" action="/forgot-pass" method="post">
+		<input type="submit" class="btn btn-success" value="Forgot Password?" style="margin-top:5px; margin-bottom:5px;">
+	  </form>
+	  <form class="form-close" action="/check-pass" method="post">
+	  <input type="submit" class="btn btn-success" value="Sign Up" style="margin-top:5px; margin-bottom:5px;">
+    </div>
+  </div>
+</div>
+</html>
