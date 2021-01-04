@@ -15,17 +15,6 @@ const port  = 663;
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html"); //send html file
-})
-
-app.get("/gotologin", (req, res)
-{
-	res.render('login');
-});
-
-app.get("/gotosignup", (req, res)
-{
-	var same_pass = "yes";
-	res.render('signup',{same_pass: same_pass});
 });
 
 app.get("/info", function(req, res)
@@ -61,6 +50,17 @@ app.get("/songs", function(req,res)
     musicUri.push(musicUriArray[i]);
   }
   res.render('songs',{musicName: musicName, musicTitle: musicTitle, musicSinger: musicSinger, musicImage: musicImage, musicUri: musicUri});
+});
+
+app.post("/gotologin", (req, res)
+{
+	res.render('login');
+});
+
+app.post("/gotosignup", (req, res)
+{
+	var same_pass = "yes";
+	res.render('signup',{same_pass: same_pass});
 });
 
 app.post("/close", function(req, res)
