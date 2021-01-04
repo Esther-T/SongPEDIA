@@ -24,7 +24,8 @@ app.get("/gotologin", (req, res)
 
 app.get("/gotosignup", (req, res)
 {
-	res.render('signup');
+	var same_pass = "yes";
+	res.render('signup',{same_pass: same_pass});
 });
 
 app.get("/info", function(req, res)
