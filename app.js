@@ -52,12 +52,12 @@ app.get("/songs", function(req,res)
   res.render('songs',{musicName: musicName, musicTitle: musicTitle, musicSinger: musicSinger, musicImage: musicImage, musicUri: musicUri});
 });
 
-app.post("/gotologin", (req, res)
+app.post("/gotologin", function(req, res)
 {
 	res.render('login');
 });
 
-app.post("/gotosignup", (req, res)
+app.post("/gotosignup", function(req, res)
 {
 	var same_pass = "yes";
 	res.render('signup',{same_pass: same_pass});
