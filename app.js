@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 var unirest = require("unirest");
+const mongoose = require("mongoose");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -11,6 +12,24 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static("public")); // this is to use the static local files that we have like css
 const port  = 663;
+
+mongoose.connect("mongodb://localhost:27017/forumDB", {useNewUrlParser: true, useUnifiedTopology: true});
+//schema
+const passwordSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  username: String,
+  password: String
+});
+
+const commentSchema = new mongoose.Schema({
+  username: String,
+  message: String,
+  date: String
+});
+
+const Password = mongoose.model("Password", passwordSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html"); //send html file
@@ -93,7 +112,7 @@ app.post("/", function(req, res){
 
   request.headers({
   	"x-rapidapi-host": "shazam.p.rapidapi.com",
-  	"x-rapidapi-key": '4e9781a532msh0865f249a6e9001p15211ajsn05fea621862b'/*insert api key*/,
+  	"x-rapidapi-key": '4e9781a532msh0865f249a6e9001p15211ajsn05fea621862b',
   	"useQueryString": true
   });
 
