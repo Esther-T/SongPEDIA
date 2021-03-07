@@ -5,10 +5,10 @@
       <h1> <%= info[1] %> </h1>
       <h2>By: <%= info[2] %> </h2>
       <img src = <%= info[3] %> >
-      <div id="playAudio">
-        <video controls name="media" height="70" width="500">
+      <div id="playAudio" style="margin-top:5%">
+        <audio controls name="media" height="70" width="500">
           <source src="<%= info[4] %>" type="audio/x-m4a">
-        </video>
+        </audio>
       </div>
 
       <form class="form-close" action="/" method="post" style="margin-top:30px">

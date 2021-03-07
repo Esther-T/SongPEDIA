@@ -41,17 +41,18 @@
     <div class="form-signin">
       <form action="/" method="post" style="display:block;">
         <img class="mb-4" src="images/icon.svg" alt="headphone" width="90" height="90">
-        <h1 class="h3 mb-3 font-weight-normal">SongPEDIA 🎵 </h1>
-
+        <h1 class="h3 mb-3 font-weight-normal">SongPEDIA</h1>
         <input type="text" name="songName" class="form-control top" placeholder="Enter a song title or artist name" required autofocus>
         <button class="btn btn-lg btn-primary btn-block" type="submit" style="float:left;">Find</button>
      </form>
-     <form action="/gotologin" method="post" style="padding-top:20%;margin-bottom:5%"">
- 			   <input type="submit" class="btn btn-success" value="Log In">
-   		</form>
-           <form action="/gotosignup" method="post">
-   			<input type="submit" class="btn btn-success" value="Create an account">
-   		</form>
+     <div class="toolbar">
+       <form action="/gotologin" method="post" style="display:inline-block;margin-top:5%">
+           <input type="submit" class="btn btn-success" value="Log In">
+        </form>
+       <form action="/gotosignup" method="post" style="display:inline-block;">
+          <input type="submit" class="btn btn-success" value="Sign Up">
+       </form>
+     </div>
    </div>
 </body>
 
